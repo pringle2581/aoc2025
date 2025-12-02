@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace aoc2025.solutions
+﻿namespace aoc2025.solutions
 {
     internal class Day02
     {
