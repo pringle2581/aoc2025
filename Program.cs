@@ -16,9 +16,9 @@ while (!complete)
         case 2:
             results = Day02.Solve(File.ReadAllLines(input + "02"));
             break;
-        //case 3:
-        //    results = Day03.Solve(File.ReadAllLines(input + "03"));
-        //    break;
+        case 3:
+            results = Day03.Solve(File.ReadAllLines(input + "03"));
+            break;
         //case 4:
         //    results = Day04.Solve(File.ReadAllLines(input + "04"));
         //    break;
