@@ -1,59 +1,47 @@
 ﻿using aoc2025.solutions;
 
-string input = "../../../input/";
+Console.WriteLine(@"
+    *       Advent
+   /.\
+  /o..\       of
+  /..o\
+ /.o..o\     Code
+ /...o.\
+/..o....\    2025
+^^^[_]^^^
+");
+
 string[] results = [];
-bool complete = false;
-while (!complete)
+while (true)
 {
     Console.WriteLine("Select a day");
     string? daystring = Console.ReadLine();
     int day = int.TryParse(daystring, out int i) ? i : 0;
-    switch (day)
-    {
-        case 1:
-            results = Day01.Solve(File.ReadAllLines(input + "01"));
-            break;
-        case 2:
-            results = Day02.Solve(File.ReadAllLines(input + "02"));
-            break;
-        case 3:
-            results = Day03.Solve(File.ReadAllLines(input + "03"));
-            break;
-        //case 4:
-        //    results = Day04.Solve(File.ReadAllLines(input + "04"));
-        //    break;
-        //case 5:
-        //    results = Day05.Solve(File.ReadAllLines(input + "05"));
-        //    break;
-        //case 6:
-        //    results = Day06.Solve(File.ReadAllLines(input + "06"));
-        //    break;
-        //case 7:
-        //    results = Day07.Solve(File.ReadAllLines(input + "07"));
-        //    break;
-        //case 8:
-        //    results = Day08.Solve(File.ReadAllLines(input + "08"));
-        //    break;
-        //case 9:
-        //    results = Day09.Solve(File.ReadAllLines(input + "09"));
-        //    break;
-        //case 10:
-        //    results = Day10.Solve(File.ReadAllLines(input + "10"));
-        //    break;
-        //case 11:
-        //    results = Day11.Solve(File.ReadAllLines(input + "11"));
-        //    break;
-        //case 12:
-        //    results = Day12.Solve(File.ReadAllLines(input + "12"));
-        //    break;
-        default:
-            Console.WriteLine("Invalid day, try again\n");
-            break;
-    }
+    results = SolveDay(day);
     if (results.Length == 2)
     {
-        complete = true;
+        break;
     }
 }
-
 Console.WriteLine($"Part 1: {results[0]}\nPart 2: {results[1]}");
+
+string[] SolveDay(int day)
+{
+    string input = "../../../input/";
+    return day switch
+    {
+        1 => Day01.Solve(File.ReadAllLines(input + "01")),
+        2 => Day02.Solve(File.ReadAllLines(input + "02")),
+        3 => Day03.Solve(File.ReadAllLines(input + "03")),
+        //4 => Day04.Solve(File.ReadAllLines(input + "04")),
+        //5 => Day05.Solve(File.ReadAllLines(input + "05")),
+        //6 => Day06.Solve(File.ReadAllLines(input + "06")),
+        //7 => Day07.Solve(File.ReadAllLines(input + "07")),
+        //8 => Day08.Solve(File.ReadAllLines(input + "08")),
+        //9 => Day09.Solve(File.ReadAllLines(input + "09")),
+        //10 => Day10.Solve(File.ReadAllLines(input + "10")),
+        //11 => Day11.Solve(File.ReadAllLines(input + "11")),
+        //12 => Day12.Solve(File.ReadAllLines(input + "12")),
+        _ => []
+    };
+}
