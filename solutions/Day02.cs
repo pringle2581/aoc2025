@@ -4,23 +4,26 @@
     {
         static public string[] Solve(string[] input)
         {
-            long part1 = 0, part2 = 0;
-            List<(long, long)> ranges = Parse(input);
-            Solve(ranges);
-            return [part1.ToString(), part2.ToString()];
+            Ranges ranges = new(input);
+            ranges.Solve();
+            return [ranges.part1.ToString(), ranges.part2.ToString()];
+        }
 
-            List<(long, long)> Parse(string[] input)
+        internal class Ranges
+        {
+            readonly List<(long, long)> ranges = [];
+            public long part1, part2 = 0;
+
+            public Ranges(string[] input)
             {
-                List<(long, long)> list = [];
                 foreach (string line in input[0].Split(","))
                 {
                     string[] range = line.Split("-");
-                    list.Add((long.Parse(range[0]), long.Parse(range[1])));
+                    ranges.Add((long.Parse(range[0]), long.Parse(range[1])));
                 }
-                return list;
             }
 
-            void Solve(List<(long start, long end)> ranges)
+            public void Solve()
             {
                 foreach (var (start, end) in ranges)
                 {

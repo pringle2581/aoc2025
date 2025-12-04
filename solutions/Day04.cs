@@ -4,8 +4,7 @@
     {
         static public string[] Solve(string[] input)
         {
-            Rolls rolls = new();
-            rolls.Parse(input);
+            Rolls rolls = new(input);
             int part1 = rolls.FindAccessible().Count;
             int part2 = rolls.Remove();
             return [part1.ToString(), part2.ToString()];
@@ -15,7 +14,7 @@
         {
             readonly HashSet<(int, int)> rolls = [];
 
-            public void Parse(string[] input)
+            public Rolls(string[] input)
             {
                 for (int x = 0; x < input.Length; x++)
                 {

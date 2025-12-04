@@ -4,24 +4,25 @@
     {
         static public string[] Solve(string[] input)
         {
-            List<int[]> banks = Parse(input);
-            long part1 = GetTotalJoltage(banks, 2);
-            long part2 = GetTotalJoltage(banks, 12);
+            Banks banks = new(input);
+            long part1 = banks.GetTotalJoltage(2);
+            long part2 = banks.GetTotalJoltage(12);
             return [part1.ToString(), part2.ToString()];
+        }
 
-            List<int[]> Parse(string[] input)
+        private class Banks
+        {
+            readonly List<int[]> banks = [];
+
+            public Banks(string[] input)
             {
-                List<int[]> list = [];
                 foreach (string line in input)
                 {
-                    char[] chararray = line.ToCharArray();
-                    int[] numarray = Array.ConvertAll(chararray, num => (int)Char.GetNumericValue(num));
-                    list.Add(numarray);
+                    banks.Add(Array.ConvertAll(line.ToCharArray(), num => (int)Char.GetNumericValue(num)));
                 }
-                return list;
             }
 
-            long GetTotalJoltage(List<int[]> banks, int battcount)
+            public long GetTotalJoltage(int battcount)
             {
                 long totaljolt = 0;
                 foreach (int[] bank in banks)
@@ -31,7 +32,7 @@
                     for (int currentbatt = 1; currentbatt <= battcount; currentbatt++)
                     {
                         int highbatt = leftbound;
-                        for (int i = leftbound + 1 ; i < bank.Length - battcount + currentbatt; i++)
+                        for (int i = leftbound + 1; i < bank.Length - battcount + currentbatt; i++)
                         {
                             if (bank[i] > bank[highbatt])
                             {
