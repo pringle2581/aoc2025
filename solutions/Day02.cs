@@ -9,7 +9,7 @@
             return [ranges.part1.ToString(), ranges.part2.ToString()];
         }
 
-        internal class Ranges
+        private class Ranges
         {
             readonly List<(long, long)> ranges = [];
             public long part1, part2 = 0;
