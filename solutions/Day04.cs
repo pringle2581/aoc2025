@@ -4,25 +4,30 @@
     {
         static public string[] Solve(string[] input)
         {
-            HashSet<(int, int)> rolls = Parse(input);
-            int part1 = FindAccessible().Count;
-            int part2 = Remove();
+            Rolls rolls = new();
+            rolls.Parse(input);
+            int part1 = rolls.FindAccessible().Count;
+            int part2 = rolls.Remove();
             return [part1.ToString(), part2.ToString()];
+        }
 
-            HashSet<(int, int)> Parse(string[] input)
+        private class Rolls
+        {
+            readonly HashSet<(int, int)> rolls = [];
+
+            public void Parse(string[] input)
             {
-                HashSet<(int, int)> grid = [];
                 for (int x = 0; x < input.Length; x++)
                 {
                     for (int y = 0; y < input[0].Length; y++)
                     {
                         if (input[x][y] == '@')
                         {
-                            grid.Add((x, y));
+                            rolls.Add((x, y));
                         }
                     }
                 }
-                return grid;
+                return;
             }
 
             bool CheckAccess((int x, int y) roll)
@@ -41,19 +46,20 @@
                 return adj < 5;
             }
 
-            HashSet<(int, int)> FindAccessible()
+            public HashSet<(int, int)> FindAccessible()
             {
                 HashSet<(int, int)> accessible = [];
                 foreach ((int, int) roll in rolls)
                 {
-                    if (CheckAccess(roll)) {
+                    if (CheckAccess(roll))
+                    {
                         accessible.Add(roll);
                     }
                 }
                 return accessible;
             }
 
-            int Remove()
+            public int Remove()
             {
                 int orig = rolls.Count;
                 while (true)
@@ -66,7 +72,8 @@
                             rolls.Remove(roll);
                         }
                     }
-                    else {
+                    else
+                    {
                         break;
                     }
                 }
