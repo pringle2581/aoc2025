@@ -11,21 +11,20 @@ Console.WriteLine(@"
 ^^^[_]^^^
 ");
 
-string[] results = [];
 while (true)
 {
     Console.WriteLine("Select a day");
     string? daystring = Console.ReadLine();
     int day = int.TryParse(daystring, out int i) ? i : 0;
-    results = SolveDay(day);
+    string[] results = SolveDay(day);
     if (results.Length == 2)
     {
+        Console.WriteLine($"Part 1: {results[0]}\nPart 2: {results[1]}");
         break;
     }
 }
-Console.WriteLine($"Part 1: {results[0]}\nPart 2: {results[1]}");
 
-string[] SolveDay(int day)
+static string[] SolveDay(int day)
 {
     string input = "../../../input/";
     return day switch
@@ -33,7 +32,7 @@ string[] SolveDay(int day)
         1 => Day01.Solve(File.ReadAllLines(input + "01")),
         2 => Day02.Solve(File.ReadAllLines(input + "02")),
         3 => Day03.Solve(File.ReadAllLines(input + "03")),
-        //4 => Day04.Solve(File.ReadAllLines(input + "04")),
+        4 => Day04.Solve(File.ReadAllLines(input + "04")),
         //5 => Day05.Solve(File.ReadAllLines(input + "05")),
         //6 => Day06.Solve(File.ReadAllLines(input + "06")),
         //7 => Day07.Solve(File.ReadAllLines(input + "07")),
