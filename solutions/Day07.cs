@@ -29,7 +29,7 @@
                     }
                 }
             }
-            return (splits, beams.Aggregate((a, x) => a + x));
+            return (splits, beams.Sum());
         }
     }
 }
