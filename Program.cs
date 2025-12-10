@@ -38,7 +38,7 @@ static string[] SolveDay(int day)
         7 => Day07.Solve(File.ReadAllLines(input + "07")),
         8 => Day08.Solve(File.ReadAllLines(input + "08")),
         9 => Day09.Solve(File.ReadAllLines(input + "09")),
-        //10 => Day10.Solve(File.ReadAllLines(input + "10")),
+        10 => Day10.Solve(File.ReadAllLines(input + "10")),
         //11 => Day11.Solve(File.ReadAllLines(input + "11")),
         //12 => Day12.Solve(File.ReadAllLines(input + "12")),
         _ => []
