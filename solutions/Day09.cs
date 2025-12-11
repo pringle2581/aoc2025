@@ -1,4 +1,6 @@
-﻿namespace aoc2025.solutions
+﻿using static aoc2025.util.Combinations;
+
+namespace aoc2025.solutions
 {
     internal class Day09
     {
@@ -79,29 +81,6 @@
                 long x = Math.Abs(c[0].x - c[1].x) + 1;
                 long y = Math.Abs(c[0].y - c[1].y) + 1;
                 return x * y;
-            }
-
-            static List<List<int>> GetCombinations(int n, int k)
-            {
-                List<List<int>> res = [];
-                List<int> temp = [];
-                CombineUtil(res, temp, n, 1, k);
-                return res;
-            }
-
-            static void CombineUtil(List<List<int>> res, List<int> temp, int n, int start, int k)
-            {
-                if (k == 0)
-                {
-                    res.Add(new List<int>(temp));
-                    return;
-                }
-                for (int i = start; i <= n; ++i)
-                {
-                    temp.Add(i);
-                    CombineUtil(res, temp, n, i + 1, k - 1);
-                    temp.RemoveAt(temp.Count - 1);
-                }
             }
         }
     }

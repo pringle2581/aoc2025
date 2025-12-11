@@ -1,4 +1,6 @@
-﻿namespace aoc2025.solutions
+﻿using static aoc2025.util.Combinations;
+
+namespace aoc2025.solutions
 {
     internal class Day08
     {
@@ -67,8 +69,10 @@
 
             void GetPairs()
             {
-                foreach (int[] combo in Combinations())
+                foreach (List<int> combo in GetCombinations(boxes.Count, 2))
                 {
+                    combo[0]--;
+                    combo[1]--;
                     long distance = Distance(boxes[combo[0]], boxes[combo[1]]);
                     pairs.Add((combo[0], combo[1], distance));
                 }
@@ -83,31 +87,6 @@
                     sum += (long)Math.Pow(box1[i] - box2[i], 2);
                 }
                 return sum;
-            }
-
-            IEnumerable<int[]> Combinations()
-            {
-                int[] result = new int[2];
-                Stack<int> stack = new();
-                stack.Push(-1);
-
-                while (stack.Count > 0)
-                {
-                    int index = stack.Count - 1;
-                    int value = stack.Pop();
-
-                    while (value < boxes.Count - 1)
-                    {
-                        result[index++] = ++value;
-                        stack.Push(value);
-
-                        if (index == 2)
-                        {
-                            yield return result;
-                            break;
-                        }
-                    }
-                }
             }
         }
     }
