@@ -40,7 +40,7 @@ static string[] SolveDay(int day)
         9 => Day09.Solve(File.ReadAllLines(input + "09")),
         10 => Day10.Solve(File.ReadAllLines(input + "10")),
         11 => Day11.Solve(File.ReadAllLines(input + "11")),
-        //12 => Day12.Solve(File.ReadAllLines(input + "12")),
+        12 => Day12.Solve(File.ReadAllLines(input + "12")),
         _ => []
     };
 }
